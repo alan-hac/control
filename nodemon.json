@@ -1,3 +1,4 @@
 {
-    "ext": "js,mjs,json,html"
+    "ext": "js,mjs,json,html",
+    "ignore": "/app/**"
 }

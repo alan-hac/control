@@ -1,0 +1,215 @@
+<div class="row">
+    <div class="col-6">
+        <div class="card bg-secondary">
+            <div class="card-header">
+                <h2 class="card-title">Sistema Operacional</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="../../../assets/icons/so.png" width="100%">
+                    </div>
+                    <div class="col-9">
+                        <div class="card-text" *ngIf="operationalSystem$ | async; let operationalSystem">
+                            <div>
+                                <label>Distro:</label> {{ operationalSystem.distro }}
+                            </div>
+                            <div>
+                                <label>Versão:</label> {{ operationalSystem.release }}
+                            </div>
+                            <div>
+                                <label>Plataforma:</label> {{ operationalSystem.platform }} ({{ operationalSystem.arch
+                                }})
+                            </div>
+                            <div>
+                                <label>Hostname:</label> {{ operationalSystem.hostname }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card bg-secondary">
+            <div class="card-header">
+                <h2 class="card-title">Modelo</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="../../../assets/icons/computer.png" width="100%">
+                    </div>
+                    <div class="col-9">
+                        <div class="card-text" *ngIf="chassis$ | async; let chassis">
+                            <div>
+                                <label>Tipo:</label> {{ chassis.type }}
+                            </div>
+                            <div>
+                                <label>Marca:</label> {{ chassis.manufacturer }}
+                            </div>
+                            <div>
+                                <label>Modelo:</label> {{ chassis.model }}
+                            </div>
+                            <div>
+                                <label>Versão:</label> {{ chassis.version }}
+                            </div>
+                            <div>
+                                <label>Serial:</label> {{ chassis.serial }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card bg-secondary">
+            <div class="card-header">
+                <h2 class="card-title">Processador</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="../../../assets/icons/processor.png" width="100%">
+                    </div>
+                    <div class="col-9">
+                        <div class="card-text" *ngIf="cpu$ | async; let cpu">
+                            <div>
+                                <label>Marca:</label> {{ cpu.manufacturer + ' ' + cpu.brand }}
+                            </div>
+                            <div>
+                                <label>Socket:</label> {{ cpu.socket }}
+                            </div>
+                            <div>
+                                <label>Núcleos:</label> {{ cpu.physicalCores + ' Cores ' + cpu.cores + ' threads '}}
+                            </div>
+                            <div>
+                                <label>Velocidade:</label> {{ cpu.speed }} GHz
+                            </div>
+                            <div *ngIf="temperature$ | async; let temperature">
+                                <label>Temperatura:</label> {{ temperature.main }} °C
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card bg-secondary">
+            <div class="card-header">
+                <h2 class="card-title">Placa mãe</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="../../../assets/icons/motherboard.png" width="100%">
+                    </div>
+                    <div class="col-9">
+                        <div class="card-text" *ngIf="motherboard$ | async; let motherboard">
+                            <div>
+                                <label>Marca:</label> {{ motherboard.manufacturer }}
+                            </div>
+                            <div>
+                                <label>Modelo:</label> {{ motherboard.model }}
+                            </div>
+                            <div>
+                                <label>Versão:</label> {{ motherboard.version }}
+                            </div>
+                            <div>
+                                <label>Serial:</label> {{ motherboard.serial }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card bg-secondary">
+            <div class="card-header">
+                <h2 class="card-title">Memórias</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="../../../assets/icons/memory.png" width="100%">
+                    </div>
+                    <div class="col-9">
+                        <div class="card-text">
+                            <div *ngIf="memoryLayout$ | async; let memoryLayout">
+                                <div class="row">
+                                    <div class="col-6" *ngFor="let memory of memoryLayout">
+                                        <label>{{ memory.manufacturer }} {{memory.bank}}</label>
+                                        <div>
+                                            <label>Part:</label> {{memory.partNum}}
+                                        </div>
+                                        <div>
+                                            <label>S/N:</label> {{memory.serialNum}}
+                                        </div>
+                                        <div>
+                                            <label>{{ memory.formFactor }}: </label> {{ (memory.size / 1024 / 1024 /
+                                            1024) | number:'1.0-0' }} GBs - {{ memory.clockSpeed }} MHz
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div *ngIf="memory$ | async; let memory">
+                                <label>Total:</label> {{(memory.total / 1024 / 1024 / 1024) | number:'1.0-1'}} GBs
+                                <label>Usado:</label> {{ (memory.used / 1024 / 1024 / 1024) | number:'1.0-1' }} GBs
+                                <label>Livres:</label> {{(memory.free / 1024 / 1024 / 1024) | number:'1.0-1' }} GBs
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuemin="0"
+                                        [attr.aria-valuemax]="(memory.total / 1024 / 1024 / 1024) | number:'1.1'"
+                                        [attr.aria-valuenow]="(memory.used / 1024 / 1024 / 1024) | number:'1.1'"
+                                        [style.width]="(memory.used * 100 / memory.total) + '%'">
+                                        {{((memory.used * 100 / memory.total) | number:'1.0-1')}} %
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card bg-secondary">
+            <div class="card-header">
+                <h2 class="card-title">Discos</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="../../../assets/icons/driver.png" width="100%">
+                    </div>
+                    <div class="col-9">
+                        <div class="card-text">
+                            <div *ngIf="disk$ | async; let disks">
+                                <div *ngFor="let disk of disks; let st = index">
+                                    <div>
+                                        <label>{{ disk.fs }}</label>
+                                    </div>
+                                    <label>Total:</label> {{(disk.size / 1024 / 1024 / 1024) | number:'1.0-1'}} GBs
+                                    <label>Usado:</label> {{(disk.used / 1024 / 1024 / 1024) | number:'1.0-1' }} GBs
+                                    <label>Livres:</label> {{(disk.available / 1024 / 1024 / 1024) | number:'1.0-1' }} GBs
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuemin="0"
+                                            [attr.aria-valuemax]="(disk.size / 1024 / 1024 / 1024) | number:'1.1'"
+                                            [attr.aria-valuenow]="(disk.used / 1024 / 1024 / 1024) | number:'1.1'"
+                                            [style.width]="(disk.used * 100 / disk.size) + '%'">
+                                            {{((disk.used * 100 / disk.size) | number:'1.0-1')}} %
+                                        </div>
+                                    </div>
+                                    <hr *ngIf="st % 2 === 0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+@import "../../../variables";
+
+img {
+  width: 100%;
+}
+
+label {
+  font-weight: bold;
+  color: $primary;
+}
+
+.card {
+  margin-top: 10px;
+  height: calc(100% - 5px);
+}
+
+.card-title {
+  color: $yellow-400;
+}
+
+
+
+
