@@ -1,4 +1,4 @@
 {
     "ext": "js,mjs,json,html",
-    "ignore": "/app/**"
+    "ignore": "/app/src**"
 }

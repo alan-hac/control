@@ -7,39 +7,39 @@ import { Systeminformation } from 'systeminformation';
   providedIn: 'root'
 })
 export class InfoService {
-  
+
   constructor(private http: HttpClient) { }
 
   getCPU(): Observable<Systeminformation.CpuData> {
-    return this.http.get<Systeminformation.CpuData>('api/info/cpu');
+    return this.http.get<Systeminformation.CpuData>('info/cpu');
   }
 
   getMotherboard(): Observable<Systeminformation.BaseboardData> {
-    return this.http.get<Systeminformation.BaseboardData>('api/info/mb');
+    return this.http.get<Systeminformation.BaseboardData>('info/mb');
   }
 
   getChassis(): Observable<Systeminformation.ChassisData> {
-    return this.http.get<Systeminformation.ChassisData>('api/info/ch');
+    return this.http.get<Systeminformation.ChassisData>('info/ch');
   }
 
   getTemperature(): Observable<Systeminformation.CpuTemperatureData> {
-    return this.http.get<Systeminformation.CpuTemperatureData>('api/info/temp');
+    return this.http.get<Systeminformation.CpuTemperatureData>('info/temp');
   }
 
   getMemory(): Observable<Systeminformation.MemData> {
-    return this.http.get<Systeminformation.MemData>('api/info/mem');
+    return this.http.get<Systeminformation.MemData>('info/mem');
   }
 
   getMemoryLayout(): Observable<Array<any>> {
-    return this.http.get<Array<any>>('api/info/mem-layout')
+    return this.http.get<Array<any>>('info/mem-layout')
   }
 
   getDisk(): Observable<Array<Systeminformation.FsSizeData>> {
-    return this.http.get<Array<Systeminformation.FsSizeData>>('api/info/disk');
+    return this.http.get<Array<Systeminformation.FsSizeData>>('info/disk');
   }
 
   getOperationalSystem(): Observable<Systeminformation.OsData> {
-    return this.http.get<Systeminformation.OsData>('api/info/os');
+    return this.http.get<Systeminformation.OsData>('info/os');
   }
 
 }
