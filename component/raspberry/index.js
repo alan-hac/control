@@ -1,5 +1,5 @@
+const router = require('express').Router();
 const rpio = require("rpio");
-const LED = 29
 const rpioReserved = {
     1: "3.3V",
     2: "5V",
@@ -15,20 +15,22 @@ const rpioReserved = {
     39: "NONE" 
 }
 
-rpio.open(LED, rpio.OUTPUT, rpio.LOW);
+router.get('/', (_, res) => res.send(true));
 
-app.get('/gpio', (req, res) => {
+router.get('/gpio', (_, res) => {
     res.send(getGPIO());
 })
 
-app.get('/on', (req, res) => {
-    rpio.write(LED, rpio.HIGH);
-    res.send("On");
+router.get('/on', (req, res) => {
+    let pin = req.params.pin;
+    rpio.write(pin, rpio.HIGH);
+    res.send(`Pin ${pin} setted to HIGH`);
 });
 
-app.get('/off', (req, res) => {
-    rpio.write(LED, rpio.LOW);
-    res.send("Off");
+router.get('/off', (req, res) => {
+    let pin = req.params.pin;
+    rpio.write(pin, rpio.LOW);
+    res.send(`Pin ${pin} setted to LOW`);
 });
 
 function getGPIO() {
