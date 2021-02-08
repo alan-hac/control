@@ -41,21 +41,18 @@
                         <img src="../../../assets/icons/computer.png" width="100%">
                     </div>
                     <div class="col-9">
-                        <div class="card-text" *ngIf="chassis$ | async; let chassis">
+                        <div class="card-text" *ngIf="system$ | async; let system">
                             <div>
-                                <label>Tipo:</label> {{ chassis.type }}
+                                <label>Marca:</label> {{ system.manufacturer }}
                             </div>
                             <div>
-                                <label>Marca:</label> {{ chassis.manufacturer }}
+                                <label>Modelo:</label> {{ system.model }}
                             </div>
                             <div>
-                                <label>Modelo:</label> {{ chassis.model }}
+                                <label>Versão:</label> {{ system.version }}
                             </div>
                             <div>
-                                <label>Versão:</label> {{ chassis.version }}
-                            </div>
-                            <div>
-                                <label>Serial:</label> {{ chassis.serial }}
+                                <label>Serial:</label> {{ system.serial }}
                             </div>
                         </div>
                     </div>

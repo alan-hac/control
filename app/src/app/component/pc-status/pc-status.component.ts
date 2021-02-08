@@ -12,7 +12,7 @@ export class PcStatusComponent implements OnInit {
 
   public cpu$!: Observable<Systeminformation.CpuData>;
   public motherboard$!: Observable<Systeminformation.BaseboardData>;
-  public chassis$!: Observable<Systeminformation.ChassisData>;
+  public system$!: Observable<Systeminformation.SystemData>;
   public temperature$!: Observable<Systeminformation.CpuTemperatureData>;
   public memory$!: Observable<Systeminformation.MemData>;
   public memoryLayout$!: Observable<Array<any>>;
@@ -21,10 +21,10 @@ export class PcStatusComponent implements OnInit {
 
   constructor(private infoService: InfoService) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.cpu$ = this.infoService.getCPU();
     this.motherboard$ = this.infoService.getMotherboard();
-    this.chassis$ = this.infoService.getChassis();
+    this.system$ = this.infoService.getSystem();
     this.temperature$ = this.infoService.getTemperature();
     this.memory$ = this.infoService.getMemory();
     this.memoryLayout$ = this.infoService.getMemoryLayout();

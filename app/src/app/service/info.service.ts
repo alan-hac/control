@@ -18,8 +18,8 @@ export class InfoService {
     return this.http.get<Systeminformation.BaseboardData>('info/mb');
   }
 
-  getChassis(): Observable<Systeminformation.ChassisData> {
-    return this.http.get<Systeminformation.ChassisData>('info/ch');
+  getSystem(): Observable<Systeminformation.SystemData> {
+    return this.http.get<Systeminformation.SystemData>('info/system');
   }
 
   getTemperature(): Observable<Systeminformation.CpuTemperatureData> {
