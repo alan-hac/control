@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="card bg-secondary">
             <div class="card-header">
                 <h2 class="card-title">Sistema Operacional</h2>
@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="card bg-secondary">
             <div class="card-header">
                 <h2 class="card-title">Modelo</h2>
@@ -60,7 +60,7 @@
             </div>
         </div>
     </div>
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="card bg-secondary">
             <div class="card-header">
                 <h2 class="card-title">Processador</h2>
@@ -93,7 +93,7 @@
             </div>
         </div>
     </div>
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="card bg-secondary">
             <div class="card-header">
                 <h2 class="card-title">Placa mãe</h2>
@@ -123,7 +123,7 @@
             </div>
         </div>
     </div>
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="card bg-secondary">
             <div class="card-header">
                 <h2 class="card-title">Memórias</h2>
@@ -137,7 +137,7 @@
                         <div class="card-text">
                             <div *ngIf="memoryLayout$ | async; let memoryLayout">
                                 <div class="row">
-                                    <div class="col-6" *ngFor="let memory of memoryLayout">
+                                    <div class="col-12 col-md-6" *ngFor="let memory of memoryLayout">
                                         <label>{{ memory.manufacturer }} {{memory.bank}}</label>
                                         <div>
                                             <label>Part:</label> {{memory.partNum}}
@@ -172,7 +172,7 @@
             </div>
         </div>
     </div>
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="card bg-secondary">
             <div class="card-header">
                 <h2 class="card-title">Discos</h2>
